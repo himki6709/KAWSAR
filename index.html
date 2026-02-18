@@ -3,58 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE GLOBAL CREATOR HOMEPAGE | OFFICIAL</title>
-    <link rel="stylesheet" href="style.css">
+    <title>THE LITTLE HOUSE | KAWSAR TM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <style>
+        :root { --gold: #9E7E45; --dark-bg: #050505; --card-bg: #111; }
+        body { margin: 0; background: var(--dark-bg); color: #fff; font-family: 'Times New Roman', serif; text-align: center; }
+
+        /* Navigation */
+        .top-nav { padding: 20px 5%; background: rgba(0,0,0,0.9); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo { font-size: 24px; letter-spacing: 3px; font-weight: bold; }
+        .logo span { font-size: 14px; color: var(--gold); vertical-align: middle; margin-left: 5px; }
+        
+        .payment-info { display: flex; gap: 15px; flex-wrap: wrap; }
+        .pay-card { background: #1a1a1a; padding: 10px 15px; border-radius: 5px; border: 1px solid var(--gold); font-size: 12px; cursor: pointer; transition: 0.3s; }
+        .pay-card:hover { background: var(--gold); color: #000; }
+
+        /* Hero Section */
+        .hero { padding: 80px 20px; }
+        .shimmer-title { font-size: 50px; letter-spacing: 8px; text-transform: uppercase; margin: 0; background: linear-gradient(90deg, #9E7E45, #fff, #9E7E45); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s infinite; }
+        @keyframes shine { 0% { background-position: -200%; } 100% { background-position: 200%; } }
+        
+        .stats { display: flex; justify-content: center; gap: 30px; margin: 40px 0; }
+        .stat-item { border: 1px solid #333; padding: 20px; border-radius: 10px; width: 150px; }
+        .stat-item h3 { color: var(--gold); margin: 0; font-size: 20px; }
+
+        /* Map Placeholder */
+        .map-container { width: 90%; max-width: 1200px; height: 500px; margin: 0 auto; border: 2px solid var(--gold); background: #000; position: relative; overflow: auto; }
+        .grid-info { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #444; }
+
+        .cta-btn { background: var(--gold); color: #000; padding: 18px 40px; text-decoration: none; font-weight: bold; border-radius: 0; letter-spacing: 2px; display: inline-block; margin-top: 40px; transition: 0.4s; }
+        .cta-btn:hover { background: #fff; transform: translateY(-5px); }
+    </style>
 </head>
 <body>
+
 <div class="top-nav">
-    <div class="payment-pills">
-        <div class="pill yellow" onclick="copyVal('912221034')">BINANCE ID: 912221034</div>
-        <div class="pill white" onclick="copyVal('TTapBkTqrDnzHbWzek6wSBUTcJKFmR8Ws6')">USDT (TRC20)</div>
-    </div>
-    <div class="social-icons">
-        <a href="https://facebook.com/theglobalcreatorhomepage" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://instagram.com/theglobalcreatorhomepage" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://x.com/theglobalcreatorhomepage" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://youtube.com/@theglobalcreatorhomepage" target="_blank"><i class="fab fa-youtube"></i></a>
+    <div class="logo">THE LITTLE HOUSE <span>KAWSAR <small>TM</small></span></div>
+    <div class="payment-info">
+        <div class="pay-card" onclick="copyIt('912221034')">
+            <strong>BINANCE ID:</strong> 912221034
+        </div>
+        <div class="pay-card" onclick="copyIt('TTapBkTqrDnzHbWzek6wSBUTcJKFmR8Ws6')">
+            <strong>USDT (TRC20):</strong> TTap...mR8Ws6
+        </div>
+        <div class="pay-card" onclick="copyIt('0x443792A4884e8e855f954ccEF910778Aff1eb78E')">
+            <strong>WEB3 WALLET:</strong> 0x44...b78E
+        </div>
     </div>
 </div>
 
 <div class="hero">
-    <h1 class="shimmer-title">THE GLOBAL CREATOR HOMEPAGE</h1>
-    <p class="tagline">A LIMITED LEGACY FOR 20,000 ELITE GLOBAL CREATORS.</p>
-    <div class="stats-row">
-        <div class="stat-box">TOTAL PLOTS: 20,000</div>
-        <div class="stat-box sold">CLAIMED: <span id="sold-count">0</span></div>
-        <div class="stat-box rem">VACANT: <span id="rem-count">20,000</span></div>
+    <h1 class="shimmer-title">THE LITTLE HOUSE</h1>
+    <p style="color: #888; letter-spacing: 4px;">A LIMITED ELITE LEGACY | 100,000 PLOTS</p>
+    
+    <div class="stats">
+        <div class="stat-item"><h3>100x100</h3><small>Plot Size</small></div>
+        <div class="stat-item"><h3>$100</h3><small>Per Plot</small></div>
+        <div class="stat-item"><h3>100,000</h3><small>Total Slots</small></div>
     </div>
-    <div class="actions">
-        <a href="order.html" class="cta-gold">RESERVE MY PLOT ($20)</a>
-        <button onclick="downloadMap()" class="cta-outline"><i class="fas fa-camera"></i> DOWNLOAD MAP</button>
+
+    <div class="map-container">
+        <div class="grid-info">
+            <i class="fas fa-th" style="font-size: 50px;"></i>
+            <p>100,000 PLOT GRID INITIALIZING...</p>
+        </div>
     </div>
+
+    <a href="order.html" class="cta-btn">RESERVE YOUR PLOTS</a>
 </div>
 
-<div class="map-container">
-    <div id="viewport"><div id="mover"><canvas id="mainCanvas"></canvas></div></div>
-</div>
-
-<div class="future-notice">
-    <p>🌍 <strong>GLOBAL CAPABILITY:</strong> This platform is designed to host 100 creators from every country worldwide.</p>
-    <p style="color: #FCD535; font-weight: bold;">⚠️ LIMITED EDITION: This map is strictly limited to 20,000 plots. The number of spots will NEVER be increased in the future.</p>
-</div>
-
-<footer>THE GLOBAL CREATOR HOMEPAGE © 2026 KAWSAR AHMED</footer>
-<a href="support.html" class="wa-float"><i class="fab fa-whatsapp"></i> 24/7 SUPPORT</a>
-<div id="legacy-tooltip"></div>
 <script>
-    function copyVal(txt) {
-        navigator.clipboard.writeText(txt);
-        alert("Copied: " + txt);
+    function copyIt(val) {
+        navigator.clipboard.writeText(val);
+        alert("Copied Address: " + val);
     }
 </script>
-<script src="script.js"></script>
+
 </body>
 </html>
